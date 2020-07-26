@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "projects": {
+    "pms": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/pms",
+      "sourceRoot": "apps/pms/src",
+      "prefix": "template-po",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/pms",
+            "index": "apps/pms/src/index.html",
+            "main": "apps/pms/src/main.ts",
+            "polyfills": "apps/pms/src/polyfills.ts",
+            "tsConfig": "apps/pms/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/pms/src/favicon.ico", "apps/pms/src/assets"],
+            "styles": ["apps/pms/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/pms/src/environments/environment.ts",
+                  "with": "apps/pms/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "pms:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pms:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pms:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/pms/tsconfig.app.json",
+              "apps/pms/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/pms/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/pms/jest.config.js",
+            "tsConfig": "apps/pms/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/pms/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "pms-e2e": {
+      "root": "apps/pms-e2e",
+      "sourceRoot": "apps/pms-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/pms-e2e/cypress.json",
+            "tsConfig": "apps/pms-e2e/tsconfig.e2e.json",
+            "devServerTarget": "pms:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pms:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/pms-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/pms-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "pms"
+}
