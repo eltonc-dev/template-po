@@ -1,0 +1,16 @@
+::ng-deep {
+  .thex-search {
+    .po-input {
+      border-radius: 30px;
+      padding-right: 44px;
+      padding-left: 8px;
+    }
+    .po-field-container-content {
+      display: flex;
+      flex-direction: row-reverse;
+      .po-field-icon-container-left {
+        padding-right: 10px;
+      }
+    }
+  }
+}

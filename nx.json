@@ -28,6 +28,9 @@
     "pms-e2e": {
       "tags": [],
       "implicitDependencies": ["pms"]
+    },
+    "ui": {
+      "tags": []
     }
   }
 }

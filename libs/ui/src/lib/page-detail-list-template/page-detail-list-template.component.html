@@ -1,0 +1,23 @@
+<thex-page-default-template>
+  <div>
+    <po-disclaimer-group
+      [p-disclaimers]="[{ value: 'disclaimer' }]"
+      [p-hide-remove-all]="false"
+      p-title="Filtros"></po-disclaimer-group>
+
+    <div class="content" >
+      <thex-table
+        [items]="items"
+        [columns]="columns"
+        height="400"
+      ></thex-table>
+      <po-widget
+      p-height="352"
+      >
+      <ng-content></ng-content>
+      </po-widget>
+    </div>
+
+  </div>
+
+</thex-page-default-template>

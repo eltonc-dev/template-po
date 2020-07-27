@@ -1,0 +1,17 @@
+<po-table
+  [p-items]="items"
+  [p-columns]="columns"
+  p-show-more-disabled="false"
+  p-striped="true"
+  p-sort="true"
+  [p-height]="height"
+  p-container="shadow"
+  [p-actions]="actions"
+  (p-show-more)="loadMore()"
+>
+  <ng-template p-table-cell-template let-column="column" let-row="row">
+    <div >
+      <h1 >CANCELADA</h1>
+    </div>
+  </ng-template>
+</po-table>

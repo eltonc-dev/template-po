@@ -1,0 +1,17 @@
+<thex-page-default-template>
+  <div>
+    <po-disclaimer-group
+      [p-disclaimers]="[{ value: 'disclaimer' }]"
+      [p-hide-remove-all]="false"
+      (p-remove-all)="removeAll()"
+      p-title="Filtros"></po-disclaimer-group>
+
+    <thex-table
+      [items]="items"
+      [columns]="columns"
+      [actions]="actions"
+      height="400"
+    ></thex-table>
+  </div>
+
+</thex-page-default-template>

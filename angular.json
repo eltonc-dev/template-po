@@ -21,8 +21,14 @@
             "polyfills": "apps/pms/src/polyfills.ts",
             "tsConfig": "apps/pms/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/pms/src/favicon.ico", "apps/pms/src/assets"],
-            "styles": ["apps/pms/src/styles.scss"],
+            "assets": [
+              "apps/pms/src/favicon.ico",
+              "apps/pms/src/assets"
+            ],
+            "styles": [
+              "libs/ui/src/assets/main.scss",
+              "apps/pms/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -80,7 +86,10 @@
               "apps/pms/tsconfig.app.json",
               "apps/pms/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/pms/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/pms/**/*"
+            ]
           }
         },
         "test": {
@@ -89,7 +98,10 @@
             "jestConfig": "apps/pms/jest.config.js",
             "tsConfig": "apps/pms/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "apps/pms/src/test-setup.ts"
+            "setupFile": "apps/pms/src/test-setup.ts",
+            "styles": [
+
+            ]
           }
         }
       }
@@ -115,9 +127,49 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/pms-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/pms-e2e/**/*"]
+            "tsConfig": [
+              "apps/pms-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/pms-e2e/**/*"
+            ]
           }
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "template-po",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/tsconfig.lib.json",
+              "libs/ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "tsConfig": "libs/ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       }
     }

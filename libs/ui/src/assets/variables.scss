@@ -1,0 +1,92 @@
+:root {
+  /* Cor do background da linha da tabela */
+  --color-primary-light-95: #fcf6f9;
+
+  /* Borda inferior da Table Header */
+  --color-primary-light-80: #f5dbe8;
+
+  /* Scroll (opacidade de 50%) */
+  --color-primary-alpha-50: rgba(201, 53, 125, 0.5);
+
+  /* Botão primário, Links, Cor da borda do input selecionado, Cor da borda do botão secundário */
+  --color-primary: #0C9ABE;
+
+  /* Hover do Botão primário, Links, Cor da borda do botão secundário */
+  --color-primary-dark-20: #0C9ABE;
+
+  /* Pressed do Botão primário, Links, Cor da borda do botão secundário */
+  --color-primary-dark-40: #8b255a;
+
+  /* Secondary */
+  --color-secondary: #193550;
+
+  --color-secondary-dark-20: #733b8e;
+
+  --color-secondary-dark-40: #5e2e73;
+
+  /* Overlay de Modal e Menu (70% de opacidade) */
+  --color-secondary-dark-60-alpha-70: rgba(59, 28, 74, 0.7);
+
+  --color-secondary-dark-60: #3b1c4a;
+
+  /* Tertiary */
+
+  /* Cor do background da linha de arquivo em carregamento (Upload) */
+  --color-tertiary-light-90: #fffaef;
+
+  /* Borda esquerda do menu lateral selecionado, Tab selecionada, Card em destaque */
+  --color-tertiary: #37b6c4;
+
+  /* Cor de gráficos, botão do disclaimer */
+  --color-tertiary-dark-5: #37b6c4;
+
+  --color-tertiary-dark-40: #37b6c4;
+
+  --color-tertiary-dark-60: #37b6c4;
+
+  --color-white: #ffffff;
+
+  --color-white-alpha-30: rgba(255, 255, 255, 0.3);
+
+  /* Background da página, Background da linha selecionada */
+  --color-neutral-light-98: #fbfbfb;
+
+  /* Borda inferior de item de tabela, Base do Slider, Background do Input inativo */
+  --color-neutral-light-90: #eceeee;
+
+  /* Step inativo, Base Switch desligado */
+  --color-neutral-light-80: #dadedf;
+
+  /* Ícone desabilitado, Slider desabilitado, Borda de input */
+  --color-neutral-light-60: #b6bdbf;
+
+  /* Texto do Placeholder */
+  --color-neutral-light-40: #9da7a9;
+
+  /* Borda superior do itens do menu (45% de opacidade) */
+  --color-neutral-alpha-45: rgba(74, 92, 96, 0.45);
+
+  /* Background do Feedback, Pill de informação */
+  --color-neutral: #4a5c60;
+
+  /* Usar em menu: Área do logo, Background do menu */
+  --color-neutral-dark-40: #2c3739;
+
+
+
+  --color-button-background-color: var(--color-white);
+  --color-button-border: var(--color-secondary);
+  --color-button-color: var(--color-secondary);
+
+  --color-button-background-color-hover: var(--color-transparent);
+  --color-button-border-hover: var(--color-secondary-dark-20);
+  --color-button-color-hover: var(--color-secondary-dark-20);
+
+  --color-button-background-color-pressed: var(--color-transparent);
+  --color-button-border-pressed: var(--color-secondary-dark-40);
+  --color-button-color-pressed: var(--color-secondary-dark-40);
+
+  --color-button-background-color-disabled: var(--color-transparent);
+  --color-button-border-disabled: var(--color-neutral-light-60);
+  --color-button-color-disabled: var(--color-neutral-light-60);
+}

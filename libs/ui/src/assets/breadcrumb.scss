@@ -1,0 +1,15 @@
+.po-breadcrumb {
+  background-color: transparent;
+  .po-breadcrumb-label:not(:first-child) {
+    padding: 7px 0 7px 0;
+  }
+  .po-breadcrumb-arrow {
+    float: right;
+    height: 15px;
+    width: 13px;
+    transform: rotate(20deg);
+    margin-top: 6px;
+    border: none;
+    border-right: 1px solid var(--color-secondary);
+  }
+}

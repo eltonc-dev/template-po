@@ -1,0 +1,27 @@
+:host {
+  display: block;
+
+
+  .title-container {
+    > div, .subtitle, {
+      padding: 0 8px;
+    }
+
+    > div:first-child {
+      padding-left: 0;
+    }
+
+    > div:last-child {
+      padding-right: 0;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .flex-1 {
+    flex-grow: 1;
+  }
+
+}

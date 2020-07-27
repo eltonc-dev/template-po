@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.base.json",
+  "exclude": [
+    "../apps/pms/src/test.ts",
+    "../apps/**/*.spec.ts",
+    "../libs/**/*.spec.ts"
+  ],
+  "include": [
+    "../libs/ui/**/*"
+  ],
+  "files": [
+    "./typings.d.ts"
+  ]
+}
