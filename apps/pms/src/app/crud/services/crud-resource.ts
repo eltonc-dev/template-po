@@ -31,7 +31,7 @@ export class CrudResource {
       name: 'Augusto',
       age: 99
     },
-  ]
+  ];
   // TODO(crud): replace api to your own
   constructor(private api: HttpClient) { }
 
@@ -55,14 +55,13 @@ export class CrudResource {
   delete(id: string): Observable<any> {
     return this.api.delete(`${this.baseUrl}/${id}`);
   }
-
   toggle(id: string): Observable<any> {
     return this.api.patch(`${this.baseUrl}/toggle`, null);
   }
 
   search(params: any): Observable<CrudModel[]> {
     // return this.api.get<CrudModel[]>(`${this.baseUrl}/search`, { params } );
-    return of(this.mockList.filter(item => item.name.indexOf(params.term) >= 0))
+    return of(this.mockList.filter(item => item.name.indexOf(params.term) >= 0));
   }
 
 }

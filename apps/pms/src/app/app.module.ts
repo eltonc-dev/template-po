@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NewComponent } from './new/new.component';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, NewComponent],
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
     PoTableModule,
     PoFieldModule,
     PoDialogModule,

@@ -15,6 +15,7 @@ import {
   CrudDeleteConfirmAsk
 } from '../actions/crud-actions';
 import { selectCrudCurrentItem, selectCrudItems, selectSuccess,  } from '../selectors/crud-selectos';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +34,9 @@ export class CrudFacadeService {
     return this.store.select(selectCrudCurrentItem);
   }
 
-  save(crud: CrudModel, id: string): Observable<boolean> {
+  save(crud: CrudModel, id: string): Observable<string> {
     this.store.dispatch(CrudSave({crud, id}));
-    return this.store.select(selectSuccess);
+    return this.store.select(selectSuccess).pipe(take(1));
   }
 
   delete(crud: CrudModel, confirm = true){

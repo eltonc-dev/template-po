@@ -10,4 +10,4 @@ export const selectCrudCurrentItem =
   createSelector(selectFeatureCrud, (state: CrudState): CrudModel => state.currentItem);
 
 export const selectSuccess = 
-createSelector(selectFeatureCrud, (state: CrudState): boolean => state.lastRequestStatus === 'success')
+createSelector(selectFeatureCrud, (state: CrudState): string => state.lastRequestStatus)

@@ -3,7 +3,6 @@ import { CrudModel } from '../models/crud-model';
 export const CRUD_STATE_NAME = 'crud';
 
 export interface CrudState {
-  filteredItems: CrudModel[];
   items: CrudModel[];
   currentItem: CrudModel;
   elasticSearch: string;
@@ -13,7 +12,6 @@ export interface CrudState {
 }
 
 export const initialCrudState = {
-  filteredItems: [],
   items: [],
   currentItem: null,
   elasticSearch: null,
