@@ -5,6 +5,7 @@ import { CrudFacadeService } from './crud/+state/facade/crud-facade.service';
 import { Subscription, Observable, fromEvent } from 'rxjs';
 import { CrudModel } from './crud/models/crud-model';
 import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pms-root',
@@ -12,7 +13,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private crudFacade: CrudFacadeService){}
+  constructor(private crudFacade: CrudFacadeService, private router: Router){}
 
   @ViewChild('search', {static: true}) searchInput: PoInputComponent;
   
@@ -57,8 +58,8 @@ export class AppComponent implements OnInit {
   }
 
   private edit(id) {
-    console.log('item', id);
     this.crudFacade.getById(id);
+    this.router.navigate(['edit']);
 
   }
 
@@ -76,6 +77,7 @@ export class AppComponent implements OnInit {
   new() {
     console.log('new');
     this.crudFacade.resetCurrentItem();
+    this.router.navigate(['new']);
   }
 
 }

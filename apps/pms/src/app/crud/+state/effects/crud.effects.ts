@@ -9,7 +9,7 @@ import {
   CrudGetById,
   CrudGetByIdError,
   CrudGetByIdSuccess,
-  CrudSave, CrudSaveError, CrudSaveSuccess, CrudToggle, CrudToggleError, CrudToggleSuccess, CrudDelete, CrudDeleteConfirm, CrudDeleteSuccess, CrudDeleteError, CrudDeleteCancel, CrudDeleteConfirmAsk
+  CrudSave, CrudSaveError, CrudSaveSuccess, CrudToggle, CrudToggleError, CrudToggleSuccess, CrudDelete, CrudDeleteConfirm, CrudDeleteSuccess, CrudDeleteError, CrudDeleteCancel, CrudDeleteConfirmAsk, CrudElasticSearch, CrudElasticSearchSuccess, CrudElasticSearchError
 } from '../actions/crud-actions';
 import { catchError, concatMap, switchMap, tap } from 'rxjs/operators';
 import { of, iif, Observable } from 'rxjs';
@@ -117,5 +117,13 @@ export class CrudEffects {
     tap(() => this.toaster.success('variable.saveSuccessM'))
   ));
 
+  /* Search */
+  elasticSearch$ = createEffect( () => this.actions$.pipe(
+    ofType(CrudElasticSearch),
+    switchMap(({term}) => this.resource.search({term}).pipe(
+      concatMap( (items) => of(CrudElasticSearchSuccess({items}))),
+      catchError( error => of(CrudElasticSearchError({error})))
+    ))
+  ));
 
 }

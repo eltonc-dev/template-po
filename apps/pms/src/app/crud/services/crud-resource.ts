@@ -60,8 +60,9 @@ export class CrudResource {
     return this.api.patch(`${this.baseUrl}/toggle`, null);
   }
 
-  search(params: any) {
-    this.api.get(`${this.baseUrl}/search`, { params } );
+  search(params: any): Observable<CrudModel[]> {
+    // return this.api.get<CrudModel[]>(`${this.baseUrl}/search`, { params } );
+    return of(this.mockList.filter(item => item.name.indexOf(params.term) >= 0))
   }
 
 }

@@ -53,7 +53,7 @@ const _CrudReducer = createReducer(
   on(CrudToggleError, (state, { error }) => _setErrorState(state, error)),
 
   on(CrudElasticSearch, (state, { term}) => ({...state, elasticSearch: term})),
-  on(CrudElasticSearchSuccess, (state, { items }) => ({...state, filteredItems: items})),
+  on(CrudElasticSearchSuccess, (state, { items }) => ({...state,  items})),
   on(CrudElasticSearchError, (state, { error }) => _setErrorState(state, error)),
 
   on(CrudAdvancedSearch, (state, { filters }) => ({...state, advancedSearch: filters})),
