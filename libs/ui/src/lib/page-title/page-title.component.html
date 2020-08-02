@@ -1,15 +1,15 @@
 <div class="title-container" >
   <div class="flex-1" >
-    <thex-icon-button></thex-icon-button>
-    <span class="po-font-subtitle subtitle">{{title}}</span>
+    <span class="po-font-subtitle">{{title}}</span>
   </div>
-  <div *ngIf="buttons" class="flex-1" >
-    <po-button-group [p-buttons]="buttons" p-toggle="single"></po-button-group>
-  </div>
+<!--  <div *ngIf="buttons" class="flex-1" >-->
+<!--    <po-button-group [p-buttons]="buttons" p-toggle="single"></po-button-group>-->
+<!--  </div>-->
   <div class="flex-1">
-    <thex-search></thex-search>
+    <thex-search class="po-md-9"></thex-search>
+    <po-button class="po-md-3" p-type="link" p-label="Busca Avançada" ></po-button>
   </div>
   <div *ngFor="let btn of iconActions" >
-    <thex-icon-button [icon]="btn.icon" [type]="btn.type"></thex-icon-button>
+    <po-button [p-icon]="btn.icon" [p-type]="btn.type" [p-label]="btn.label" ></po-button>
   </div>
 </div>

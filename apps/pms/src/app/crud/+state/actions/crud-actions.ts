@@ -14,6 +14,13 @@ export enum CrudActionsEnum {
   SaveSuccess = '[ Crud ] Save - SUCCESS',
   SaveError = '[ Crud ] Save - ERROR',
 
+  Delete = '[ Crud ] Delete',
+  DeleteConfirmAsk = '[ Crud ] Delete - ASK',
+  DeleteConfirm = '[ Crud ] Delete - CONFIRM',
+  DeleteCancel = '[ Crud ] Delete - CANCEL',
+  DeleteSuccess = '[ Crud ] Delete - SUCCESS',
+  DeleteError = '[ Crud ] Delete - ERROR',
+
   Toggle = '[ Crud ] Toggle',
   ToggleSuccess = '[ Crud ] Toggle - SUCCESS',
   ToggleError = '[ Crud ] Toggle - ERROR',
@@ -42,6 +49,13 @@ export const CrudGetByIdError = createAction(CrudActionsEnum.GetByIdError, props
 export const CrudSave = createAction(CrudActionsEnum.Save, props<{crud: CrudModel, id: string}>());
 export const CrudSaveSuccess = createAction(CrudActionsEnum.SaveSuccess);
 export const CrudSaveError = createAction(CrudActionsEnum.SaveError, props<{error: string}>());
+
+export const CrudDelete = createAction(CrudActionsEnum.Delete, props<{crud: CrudModel, confirm: boolean}>());
+export const CrudDeleteConfirmAsk = createAction(CrudActionsEnum.DeleteConfirmAsk, props<{crud: CrudModel}>());
+export const CrudDeleteConfirm = createAction(CrudActionsEnum.DeleteConfirm, props<{id: string}>());
+export const CrudDeleteCancel = createAction(CrudActionsEnum.DeleteCancel);
+export const CrudDeleteSuccess = createAction(CrudActionsEnum.DeleteSuccess);
+export const CrudDeleteError = createAction(CrudActionsEnum.DeleteError, props<{error: string}>());
 
 export const CrudToggle = createAction(CrudActionsEnum.Toggle, props<{id: string}>());
 export const CrudToggleSuccess = createAction(CrudActionsEnum.ToggleSuccess);

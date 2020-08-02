@@ -13,7 +13,8 @@ export class PageTitleComponent implements OnInit {
   @Input() iconActions = [
     {
       icon: 'po-icon-plus',
-      type: 'primary'
+      type: 'primary',
+      label: 'Novo Item'
     },
     // {
     //   icon: 'po-icon-plus',

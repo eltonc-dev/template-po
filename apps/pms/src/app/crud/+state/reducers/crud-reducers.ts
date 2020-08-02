@@ -5,25 +5,51 @@ import {
   CrudElasticSearch, CrudElasticSearchError,
   CrudElasticSearchSuccess,
   CrudGetAll, CrudGetAllError,
-  CrudGetAllSuccess, CrudGetByIdError,
-  CrudGetByIdSuccess, CrudResetAdvancedSearch, CrudResetCurrentItem, CrudResetElasticSearch, CrudSaveError, CrudToggleError
+  CrudGetAllSuccess,
+  CrudGetByIdError,
+  CrudGetByIdSuccess,
+  CrudResetAdvancedSearch,
+  CrudResetCurrentItem,
+  CrudResetElasticSearch,
+  CrudSaveError,
+  CrudToggleError,
+  CrudGetById,
+  CrudSave,
+  CrudSaveSuccess,
+  CrudToggle,
+  CrudToggleSuccess,
+  CrudDeleteSuccess,
+  CrudDeleteError,
+  CrudDeleteConfirm
 } from '../actions/crud-actions';
 
 const _setErrorState = (state: any, error: string) => {
-  return ({...state, error, loading: false});
+  return ({...state, error, lastRequestStatus: 'error'});
 };
+
+const _loading = (state): any => ({...state, lastRequestStatus: 'loading'});
+const _success = (state): any => ({...state, lastRequestStatus: 'success'});
 
 const _CrudReducer = createReducer(
   initialCrudState,
-  on(CrudGetAll, (state) => ({...state, loading: true})),
-  on(CrudGetAllSuccess, (state, { items}) => ({...state, items, loading: false})),
+  on(CrudGetAll, (state) => _loading(state)),
+  on(CrudGetAllSuccess, (state, { items}) => ({ ..._success(state), items })),
   on(CrudGetAllError, (state, { error }) => _setErrorState(state, error)),
 
-  on(CrudGetByIdSuccess, (state, { currentItem}) => ({...state, currentItem})),
+  on(CrudGetById, (state) => _loading(state)),
+  on(CrudGetByIdSuccess, (state, { currentItem}) => ({..._success(state), currentItem})),
   on(CrudGetByIdError, (state, { error }) => _setErrorState(state, error)),
 
+  on(CrudSave, (state) => _loading(state)),
+  on(CrudSaveSuccess, (state) => _success(state)),
   on(CrudSaveError, (state, { error }) => _setErrorState(state, error)),
 
+  on(CrudDeleteConfirm, (state) => _loading(state)),
+  on(CrudDeleteSuccess, (state) => _success(state)),
+  on(CrudDeleteError, (state, { error }) => _setErrorState(state, error)),
+
+  on(CrudToggle, (state) => _loading(state)),
+  on(CrudToggleSuccess, (state) => _success(state)),
   on(CrudToggleError, (state, { error }) => _setErrorState(state, error)),
 
   on(CrudElasticSearch, (state, { term}) => ({...state, elasticSearch: term})),

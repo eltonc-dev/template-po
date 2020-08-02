@@ -8,7 +8,7 @@ export interface CrudState {
   currentItem: CrudModel;
   elasticSearch: string;
   advancedSearch: any;
-  loading: boolean;
+  lastRequestStatus: 'loading' | 'success' | 'error' | null;
   error: String;
 }
 
@@ -18,6 +18,6 @@ export const initialCrudState = {
   currentItem: null,
   elasticSearch: null,
   advancedSearch: null,
-  loading: false,
+  lastRequestStatus: null,
   error: null,
 };

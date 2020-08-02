@@ -1,10 +1,27 @@
-<div class="po-wrapper">
-<!--  <po-toolbar p-title="AppName"></po-toolbar>-->
-
-<!--  <po-menu [p-menus]="menus"></po-menu>-->
 
 
-  <po-table [p-items]="[{ table: 'PO Table' }]"> </po-table>
+  <div class="po-row">
+    <div class="po-md-12">
+      <po-input #search p-placeholder="Buscar" p-icon="po-icon-search" ></po-input>
+    </div>
+  </div>
+  <div class="po-row">
+    <div class="po-md-2">
+      <po-button p-label="Novo Item" p-icon="po-icon-plus" (p-click)="new()" ></po-button>
+    </div>
+  </div>
+  <div class="po-row">
+    <div class="po-md-12">
+      <po-table 
+      [p-items]="items$ | async" 
+      [p-columns]="columns"
+      [p-actions]="actions"> </po-table>
+    </div>
+  </div>
 
 
-</div>
+  <div class="po-row po-mt-4">
+    <div class="po-md-12">Selecionado</div>
+    <router-outlet></router-outlet>
+  </div>
+

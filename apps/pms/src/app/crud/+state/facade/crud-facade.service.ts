@@ -9,9 +9,12 @@ import {
   CrudGetById,
   CrudResetCurrentItem,
   CrudResetElasticSearch,
-  CrudToggle
+  CrudToggle,
+  CrudSave,
+  CrudDelete,
+  CrudDeleteConfirmAsk
 } from '../actions/crud-actions';
-import { selectCrudCurrentItem, selectCrudItems,  } from '../selectors/crud-selectos';
+import { selectCrudCurrentItem, selectCrudItems, selectSuccess,  } from '../selectors/crud-selectos';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,7 @@ export class CrudFacadeService {
 
   constructor(private store: Store<CrudState>) { }
 
-  getAll(dispatch: true): Observable<CrudModel[]> {
+  getAll(dispatch = true): Observable<CrudModel[]> {
     dispatch && this.store.dispatch(CrudGetAll());
     return this.store.select(selectCrudItems);
   }
@@ -28,6 +31,16 @@ export class CrudFacadeService {
   getById(id: string, dispatch = true) {
     dispatch && this.store.dispatch(CrudGetById({id}));
     return this.store.select(selectCrudCurrentItem);
+  }
+
+  save(crud: CrudModel, id: string): Observable<boolean> {
+    this.store.dispatch(CrudSave({crud, id}));
+    return this.store.select(selectSuccess);
+  }
+
+  delete(crud: CrudModel, confirm = true){
+    this.store.dispatch(CrudDelete({crud, confirm}));
+    // return this.store.select(selectSuccess);
   }
 
   toggle(id) {

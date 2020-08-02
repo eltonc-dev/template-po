@@ -1,10 +1,8 @@
 import { moduleMetadata } from '@storybook/angular';
 import { SearchModule } from '../../search/search.module';
-import { IconButtonModule } from '../../icon-button/icon-button.module';
 import { PageTitleComponent } from '../page-title.component';
 import { CommonModule } from '@angular/common';
-import { PoBreadcrumbModule, PoButtonGroupModule } from '@po-ui/ng-components';
-import { RouterModule } from '@angular/router';
+import { PoButtonGroupModule, PoButtonModule } from '@po-ui/ng-components';
 
 export default {
   title: 'Page Title',
@@ -13,8 +11,8 @@ export default {
       imports: [
         CommonModule,
         SearchModule,
-        IconButtonModule,
         PoButtonGroupModule,
+        PoButtonModule
       ]
     })
   ]

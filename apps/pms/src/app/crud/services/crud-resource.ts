@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CrudModel } from '../models/crud-model';
-// TODO(crud): remove api BaseApiService
-import { BaseApiService } from '@bifrost/api-builder/services/base-api/base-api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +10,39 @@ export class CrudResource {
 
   readonly baseUrl = 'crud';
 
+  private mockList = [
+    {
+      id: '1',
+      name: 'Elton',
+      age: 29
+    },
+    {
+      id: '2',
+      name: 'Claudia',
+      age: 35
+    },
+    {
+      id: '3',
+      name: 'Bia',
+      age: 10
+    },
+    {
+      id: '4',
+      name: 'Augusto',
+      age: 99
+    },
+  ]
   // TODO(crud): replace api to your own
-  constructor(private api: BaseApiService) { }
+  constructor(private api: HttpClient) { }
 
   getAll(): Observable<CrudModel[]> {
-    return this.api.get(this.baseUrl);
+    // return this.api.get<CrudModel[]>(this.baseUrl);
+    return of(this.mockList);
   }
 
   getById(id: string): Observable<CrudModel> {
-    return this.api.get(`${this.baseUrl}/${id}`);
+    //return this.api.get<CrudModel>(`${this.baseUrl}/${id}`);
+    return of(this.mockList.find(i => i.id === id));
   }
 
   save(item: CrudModel, id: string): Observable<any> {
@@ -29,11 +52,15 @@ export class CrudResource {
     return id ? putRequest : postRequest;
   }
 
-  toggle(id: string): Observable<any> {
-    return this.api.patch(`${this.baseUrl}/toggle`);
+  delete(id: string): Observable<any> {
+    return this.api.delete(`${this.baseUrl}/${id}`);
   }
 
-  search(params: string) {
+  toggle(id: string): Observable<any> {
+    return this.api.patch(`${this.baseUrl}/toggle`, null);
+  }
+
+  search(params: any) {
     this.api.get(`${this.baseUrl}/search`, { params } );
   }
 
