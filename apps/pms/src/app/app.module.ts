@@ -13,9 +13,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NewComponent } from './new/new.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
-  declarations: [AppComponent, NewComponent],
+  declarations: [AppComponent, NewComponent, ListComponent],
   imports: [
     BrowserModule,
     CommonModule,
@@ -26,6 +27,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     PoDialogModule,
     PoButtonModule,
     RouterModule.forRoot([
+      {
+        path: '',
+        component: ListComponent
+      },
       {
         path: 'new',
         component: NewComponent

@@ -64,6 +64,7 @@ export class CrudEffects {
 
   /* DELETE */
   private openConfirmDeleteModal(crud: CrudModel){
+    console.log('openConfirmDeleteModal');
     this.dialogService.confirm({
       title: 'text.wantDelete',
       message: crud ? crud.name : 'item',
@@ -82,7 +83,7 @@ export class CrudEffects {
   delete$ = createEffect( () => this.actions$.pipe(
     ofType(CrudDelete),
     switchMap(({crud, confirm}) => 
-      iif(() => confirm, of(CrudDeleteConfirmAsk({crud})), this.confirmDelete(crud.id))
+      iif(() => confirm, of(CrudDeleteConfirmAsk({crud})),  of(true).pipe(switchMap(() => this.confirmDelete(crud.id))) )
   )));
 
   deleteAsk$ = createEffect(() => this.actions$.pipe(

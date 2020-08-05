@@ -1,0 +1,18 @@
+<div class="po-row">
+    <div class="po-md-12">
+      <po-input #search p-placeholder="Buscar" p-icon="po-icon-search" ></po-input>
+    </div>
+  </div>
+  <div class="po-row">
+    <div class="po-md-2">
+      <po-button p-label="Novo Item" p-icon="po-icon-plus" (p-click)="new()" ></po-button>
+    </div>
+  </div>
+  <div class="po-row">
+    <div class="po-md-12">
+      <po-table 
+      [p-items]="items$ | async" 
+      [p-columns]="columns"
+      [p-actions]="actions"> </po-table>
+    </div>
+  </div>

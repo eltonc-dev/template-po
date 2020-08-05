@@ -10,7 +10,7 @@ export class CrudResource {
 
   readonly baseUrl = 'crud';
 
-  private mockList = [
+  private mockList: CrudModel[] = [
     {
       id: '1',
       name: 'Elton',
@@ -49,19 +49,42 @@ export class CrudResource {
     const postRequest = this.api.post(`${this.baseUrl}`, item);
     const putRequest = this.api.post(`${this.baseUrl}/${id}`, item);
 
-    return id ? putRequest : postRequest;
+    // return id ? putRequest : postRequest;
+    if(id) {
+      this.mockList = this.mockList.map((i: CrudModel) => {
+        if(i.id === id) {
+          i = {...item}
+        }
+        return i;
+      })
+    } else {
+      this.mockList = [
+        ...this.mockList,
+        { id: this.mockList.length, ...item }
+      ]
+    }  
+    return of(true);
   }
 
   delete(id: string): Observable<any> {
-    return this.api.delete(`${this.baseUrl}/${id}`);
+    const item = this.mockList.find(i => i.id == id);
+    const newList = [...this.mockList];
+    newList.splice(this.mockList.indexOf(item), 1);
+    console.log(item, newList);
+    this.mockList = [
+      ...newList
+    ];
+    //return this.api.delete(`${this.baseUrl}/${id}`);
+    return of(true);
   }
+
   toggle(id: string): Observable<any> {
     return this.api.patch(`${this.baseUrl}/toggle`, null);
   }
 
   search(params: any): Observable<CrudModel[]> {
     // return this.api.get<CrudModel[]>(`${this.baseUrl}/search`, { params } );
-    return of(this.mockList.filter(item => item.name.indexOf(params.term) >= 0));
+    return of(this.mockList.filter(item => item.name.toLowerCase().indexOf((<string>params.term).toLowerCase()) >= 0));
   }
 
 }
