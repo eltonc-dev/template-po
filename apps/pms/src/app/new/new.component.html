@@ -1,5 +1,9 @@
-<div class="po-row" [formGroup]="form">
-    <po-input class="po-md-8" p-label="Nome" formControlName="name" ></po-input>
-    <po-input class="po-md-4" p-label="Idade" formControlName="age" ></po-input>
-    <po-button class="po-md-4" p-label="Salver" (p-click)="save()"></po-button>
+<div class="po-row po-mt-3">
+    <div class="po-row" [formGroup]="form">
+        <div class="po-md-8">
+            <po-input class="po-md-8" p-label="Nome" formControlName="name" ></po-input>
+            <po-input class="po-md-4" p-label="Idade" formControlName="age" ></po-input>
+            <po-button class="po-md-4" p-label="Salver" (p-click)="save()"></po-button>
+        </div>
+    </div>
 </div>
